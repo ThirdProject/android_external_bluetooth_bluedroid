@@ -62,11 +62,11 @@ static tAVRC_STS avrc_pars_vendor_rsp(tAVRC_MSG_VENDOR *p_msg, tAVRC_RESPONSE *p
                             __func__, p_msg->vendor_len);
         return AVRC_STS_INTERNAL_ERR;
     }
-  
+
     BE_STREAM_TO_UINT8 (p_result->pdu, p);
     p++; /* skip the reserved/packe_type byte */
     BE_STREAM_TO_UINT16 (len, p);
-    AVRC_TRACE_DEBUG6("avrc_pars_vendor_rsp() ctype:0x%x pdu:0x%x, len:%d/0x%x vendor_len=0x%x",
+    AVRC_TRACE_DEBUG5("avrc_pars_vendor_rsp() ctype:0x%x pdu:0x%x, len:%d/0x%x vendor_len=0x%x",
                       p_msg->hdr.ctype, p_result->pdu, len, len,
                       p_msg->vendor_len);
     if (p_msg->vendor_len < len + 4)
